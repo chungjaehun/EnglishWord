@@ -37,7 +37,7 @@ function getWords(){
 
 function readTextFile()
 {
-    let file = 'Data.csv';
+    let file = 'https://chungjaehun.github.io/EnglishWord/data.csv';
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
