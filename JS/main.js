@@ -30,8 +30,8 @@ function run(){
 
 // 단어 불러오기
 function getWords(){
-    //loadCSV();
-    readTextFile()
+    loadCSV();
+    //readTextFile()
     buttonChange('게임시작');
 }
 
@@ -71,7 +71,7 @@ let datas=[];
 
 // Load CSV
 function loadCSV(){
-    fetch('Data.csv')
+    fetch('./data.csv')
     .then(function(response){
         return response.text();
     })
