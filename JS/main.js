@@ -1,5 +1,5 @@
 // 사용변수
-const GAME_TIME = 4;
+const GAME_TIME = 1;
 let isPlaying = false;
 let timeInterval;
 let words =[];
@@ -37,7 +37,7 @@ function getWords(){
 
 function readTextFile()
 {
-    let file = './Data.csv';
+    let file = 'Data.csv';
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
