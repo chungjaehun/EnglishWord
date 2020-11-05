@@ -1,5 +1,5 @@
 // 사용변수
-const GAME_TIME = 1;
+const GAME_TIME = 3;
 let isPlaying = false;
 let timeInterval;
 let words =[];
@@ -30,7 +30,7 @@ function run(){
 
 // 단어 불러오기
 function getWords(){
-    //oadCSV();
+    //loadCSV();
     readTextFile()
     buttonChange('게임시작');
 }
