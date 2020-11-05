@@ -31,7 +31,7 @@ function run(){
 // 단어 불러오기
 function getWords(){
     //loadCSV();
-    //readTextFile()
+    readTextFile()
     buttonChange('게임시작');
 }
 
