@@ -1,12 +1,14 @@
 // 사용변수
-const GAME_TIME = 3;
+let proTime = 1;
 let isPlaying = false;
 let timeInterval;
 let words =[];
 
+const progressTime = document.querySelector('.progressTime');
 const wordHangle = document.querySelector('.word-Hangle');
 const wordDisplay = document.querySelector('.word-display');
 const button = document.querySelector('.button');
+var hangleDisplay = document.querySelector('.hangle-display');
 
 init();
 
@@ -17,6 +19,7 @@ function init(){
 
 // 게임 실행
 function run(){
+    proTime =progressTime.value;
     isPlaying =true;
     console.log(button.innerText);
     if (button.innerText == "게임중"){
@@ -24,13 +27,12 @@ function run(){
         clearInterval(timeInterval);
         return;
     }
-    timeInterval = setInterval(loadWord, GAME_TIME * 1000);
+    timeInterval = setInterval(loadWord, proTime * 1000);
     buttonChange('게임중')
 }
 
 // 단어 불러오기
 function getWords(){
-    //loadCSV();
     readTextFile()
     buttonChange('게임시작');
 }
@@ -64,34 +66,10 @@ function readTextFile()
     rawFile.send(null);
 }
 
-
-
-// 문서에서 파일을 불러오기
-let datas=[];
-
-
-// Load CSV
-function loadCSV(){
-    fetch('./data.csv')
-    .then(function(response){
-        return response.text();
-    })
-    .then(function(data){
-        const spe = /\n\r|\n/;
-        const alldatas = data.split(spe);
-        for (let i = 1 ; i < alldatas.length ; i++){
-            let rows = alldatas[i].split(',');
-            let col=[];
-            for (let j = 0 ; j < rows.length ; j++){
-                col.push(rows[j])
-            }
-            words.push(col); 
-        }
-    })
-    .catch(function(error){
-        console.log(error);
-    })
+function setTime(){
+   console.log(progressTime.text);
 }
+
 
 // 단어를 불러온다
 let index = 0;
@@ -100,7 +78,12 @@ function loadWord(){
         index = 0;
     }
     wordDisplay.innerText = words[index][1];
-    wordHangle.innerText = words[index][0];
+
+    if (hangleDisplay.checked){
+        wordHangle.innerText = words[index][0];
+    } else {
+        wordHangle.innerText = "";
+    }
     index++;
 }
 
@@ -110,7 +93,6 @@ function loadWord_Random(){
     wordDisplay.innerText = words[randomIndex][1];
     wordHangle.innerText = words[randomIndex][0];
 }
-
 
 // 버튼명 변경
 function buttonChange(text){

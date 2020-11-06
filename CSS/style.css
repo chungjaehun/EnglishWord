@@ -27,9 +27,19 @@ body{
 .word-Hangle{
     margin-top : 2rem;
     font-size : 20px;
+    color:red;
 }
 
-
+.game-option {
+    margin-top : 2rem;
+    font-size : 14px;
+    display : flex;
+    justify-content : space-between;
+    width : 200px;
+}
+.progressTime{
+    width : 50px;
+}
 .button {
     width : 150px;
     height : 35px;
