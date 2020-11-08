@@ -9,6 +9,7 @@ const wordHangle = document.querySelector('.word-Hangle');
 const wordDisplay = document.querySelector('.word-display');
 const button = document.querySelector('.button');
 var hangleDisplay = document.querySelector('.hangle-display');
+var optLanguage = document.querySelector('.hangleOrEnglish');
 
 init();
 
@@ -77,10 +78,20 @@ function loadWord(){
     if (index >= words.length){
         index = 0;
     }
-    wordDisplay.innerText = words[index][1];
+
+    let main_lan;
+    let sub_lan;
+    if (optLanguage.checked){
+        main_lan = words[index][1];
+        sub_lan = words[index][0];
+    } else{
+        main_lan = words[index][0];
+        sub_lan = words[index][1];
+    }
+    wordDisplay.innerText = main_lan;
 
     if (hangleDisplay.checked){
-        wordHangle.innerText = words[index][0];
+        wordHangle.innerText = sub_lan;
     } else {
         wordHangle.innerText = "";
     }
