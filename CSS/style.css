@@ -37,6 +37,14 @@ body{
     justify-content : space-between;
     width : 220px;
 }
+.UnitList{
+    margin-top : 1rem;
+    font-size : 14px;
+    display : flex;
+    justify-content : space-evenly;
+    width : 220px; 
+}
+
 .progressTime{
     width : 50px;
 }

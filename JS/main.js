@@ -3,6 +3,7 @@ let proTime = 1;
 let isPlaying = false;
 let timeInterval;
 let words =[];
+let file = "./" + "full" + ".csv";
 
 const progressTime = document.querySelector('.progressTime');
 const wordHangle = document.querySelector('.word-Hangle');
@@ -22,7 +23,6 @@ function init(){
 function run(){
     proTime =progressTime.value;
     isPlaying =true;
-    console.log(button.innerText);
     if (button.innerText == "게임중"){
         buttonChange('게임시작');
         clearInterval(timeInterval);
@@ -32,6 +32,14 @@ function run(){
     buttonChange('게임중')
 }
 
+// unit 선택
+function unitChange(selectObj) {
+    var selectIndex=selectObj.selectedIndex;
+    file = "./" + selectObj.options[selectIndex].text + ".csv";
+    getWords();
+}
+
+
 // 단어 불러오기
 function getWords(){
     readTextFile()
@@ -40,8 +48,7 @@ function getWords(){
 
 function readTextFile()
 {
-    // let file = 'https://chungjaehun.github.io/EnglishWord/data.csv';
-    let file = './data.csv';
+    words=[];
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
