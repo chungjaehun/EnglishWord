@@ -11,6 +11,7 @@ const wordDisplay = document.querySelector('.word-display');
 const button = document.querySelector('.button');
 var hangleDisplay = document.querySelector('.hangle-display');
 var optLanguage = document.querySelector('.hangleOrEnglish');
+var selectedItem = document.querySelector('.selectedItem');
 
 init();
 
@@ -21,15 +22,25 @@ function init(){
 
 // 게임 실행
 function run(){
+
     proTime =progressTime.value;
     isPlaying =true;
     if (button.innerText == "게임중"){
+        
         buttonChange('게임시작');
         clearInterval(timeInterval);
+        progressTime.disabled =false;
+        hangleDisplay.disabled =false;
+        optLanguage.disabled =false;
+        selectedItem.disabled =false;
         return;
     }
     timeInterval = setInterval(loadWord, proTime * 1000);
     buttonChange('게임중')
+    progressTime.disabled =true;
+    hangleDisplay.disabled =true;
+    optLanguage.disabled =true;
+    selectedItem.disabled =true;
 }
 
 // unit 선택
